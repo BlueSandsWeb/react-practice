@@ -10,15 +10,27 @@
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
 </head>
 
 <body>
   <div id="app"></div>
 
   <script type="text/babel">
-  function App () {
+  function FriendsList (props) {
     return (
-      <div>Hello World</div>
+      <ul>
+        {props.list.map((name) => (
+          <li key={uuidv4()}>{name}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  function App () {
+    const friends = ['Jordyn', 'Mikenzi', 'Jake']
+    return (
+      <FriendsList list={friends} />
     )
   }
   ReactDOM.render(
